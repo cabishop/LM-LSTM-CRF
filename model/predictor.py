@@ -43,7 +43,7 @@ class predict:
             feature (list): words list
             label (list): label list
         """
-        return '\n'.join(map(lambda t: t[0] + ' '+ self.r_l_map[t[1].item()], zip(feature, label)))
+        return '\n'.join(map(lambda t: t[0] + '\t' + self.r_l_map[t[1].item()], zip(feature, label)))
 
     def decode_s(self, feature, label):
         """
@@ -128,7 +128,7 @@ class predict:
         d_len = len(documents)
         for d_ind in tqdm( range(0, d_len), mininterval=1,
                 desc=' - Process', leave=False, file=sys.stdout):
-            fout.write('-DOCSTART- -DOCSTART- -DOCSTART-\n\n')
+            #fout.write('-DOCSTART- -DOCSTART- -DOCSTART-\n\n')
             features = documents[d_ind]
             f_len = len(features)
             for ind in range(0, f_len, self.batch_size):
